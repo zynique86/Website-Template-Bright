@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brightside · 亮色网站模板</title>
+  <meta name="description" content="一个 Neo-Brutal 风格的亮色网站模板：纯色亮块、粗黑描边、硬阴影。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="nav">
+    <a class="logo" href="#">Bright<span>side</span></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#features">功能</a>
+      <a href="#work">案例</a>
+      <a href="#pricing">价格</a>
+      <a href="#faq">问答</a>
+    </nav>
+    <a class="btn btn-sm btn-dark nav-cta" href="#cta">免费开始</a>
+    <button class="menu-btn" id="menuBtn" aria-label="打开菜单" aria-expanded="false">☰</button>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-text">
+        <span class="tag bg-mint">✦ 2026 全新上线</span>
+        <h1>让你的品牌<br><mark>亮</mark>起来。</h1>
+        <p class="lead">Brightside 帮你在几分钟内做出大胆、好看、让人记住的网站。不用设计经验，也不用写代码。</p>
+        <div class="hero-actions">
+          <a class="btn btn-pink" href="#cta">立即试用 →</a>
+          <a class="btn btn-white" href="#work">看看案例</a>
+        </div>
+        <ul class="hero-stats">
+          <li><strong>12k+</strong><span>创作者在用</span></li>
+          <li><strong>4.9★</strong><span>用户评分</span></li>
+          <li><strong>3 分钟</strong><span>上线一个页面</span></li>
+        </ul>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="card-stack">
+          <div class="mock bg-yellow rot-l">
+            <div class="mock-bar"><i></i><i></i><i></i></div>
+            <div class="mock-line w80"></div>
+            <div class="mock-line w60"></div>
+            <div class="mock-btn bg-pink"></div>
+          </div>
+          <div class="mock bg-blue rot-r">
+            <div class="mock-bar"><i></i><i></i><i></i></div>
+            <div class="mock-chart">
+              <span style="height:40%"></span><span style="height:70%"></span><span style="height:55%"></span><span style="height:90%"></span>
+            </div>
+          </div>
+          <div class="sticker bg-mint">WOW!</div>
+          <div class="sticker sticker-2 bg-orange">★</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>大胆配色 ✦ 粗描边 ✦ 硬阴影 ✦ 响应式 ✦ 零依赖 ✦ 一键换色 ✦</span>
+        <span>大胆配色 ✦ 粗描边 ✦ 硬阴影 ✦ 响应式 ✦ 零依赖 ✦ 一键换色 ✦</span>
+      </div>
+    </div>
+
+    <!-- Features -->
+    <section class="section" id="features">
+      <div class="section-head">
+        <span class="tag bg-yellow">功能</span>
+        <h2>你需要的，全都有。</h2>
+      </div>
+      <div class="grid-3">
+        <article class="box bg-yellow">
+          <div class="icon">⚡</div>
+          <h3>超快上手</h3>
+          <p>拖拽式编辑，所见即所得。打开就能用，三分钟出第一版。</p>
+        </article>
+        <article class="box bg-pink">
+          <div class="icon">🎨</div>
+          <h3>一键换色</h3>
+          <p>所有颜色都是 CSS 变量，改一处，整站跟着变。</p>
+        </article>
+        <article class="box bg-mint">
+          <div class="icon">📱</div>
+          <h3>手机友好</h3>
+          <p>从 320px 小屏到超宽显示器，布局都稳稳的。</p>
+        </article>
+        <article class="box bg-blue">
+          <div class="icon">🔍</div>
+          <h3>SEO 友好</h3>
+          <p>语义化 HTML 结构，搜索引擎一眼就能读懂。</p>
+        </article>
+        <article class="box bg-orange">
+          <div class="icon">🧩</div>
+          <h3>模块化</h3>
+          <p>每个区块都可以单独复制、删除、重新排列。</p>
+        </article>
+        <article class="box bg-white">
+          <div class="icon">🚀</div>
+          <h3>随处部署</h3>
+          <p>纯静态文件，Vercel、Netlify、GitHub Pages 都能直接放。</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Work -->
+    <section class="section section-alt" id="work">
+      <div class="section-head">
+        <span class="tag bg-pink">案例</span>
+        <h2>他们已经亮起来了。</h2>
+      </div>
+      <div class="work-grid">
+        <a class="work bg-orange" href="#">
+          <div class="work-img">🍊</div>
+          <div class="work-meta"><h3>橙子咖啡</h3><span>品牌官网</span></div>
+        </a>
+        <a class="work bg-blue" href="#">
+          <div class="work-img">🎧</div>
+          <div class="work-meta"><h3>Loud FM</h3><span>播客主页</span></div>
+        </a>
+        <a class="work bg-mint" href="#">
+          <div class="work-img">🌱</div>
+          <div class="work-meta"><h3>小绿植</h3><span>电商落地页</span></div>
+        </a>
+        <a class="work bg-yellow" href="#">
+          <div class="work-img">✏️</div>
+          <div class="work-meta"><h3>阿乐的作品集</h3><span>个人作品集</span></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="section" id="pricing">
+      <div class="section-head">
+        <span class="tag bg-blue">价格</span>
+        <h2>简单透明，没有套路。</h2>
+      </div>
+      <div class="grid-3 pricing">
+        <article class="box bg-white plan">
+          <h3>入门</h3>
+          <p class="price">¥0<small>/月</small></p>
+          <ul><li>1 个网站</li><li>基础模板</li><li>社区支持</li></ul>
+          <a class="btn btn-white" href="#cta">开始使用</a>
+        </article>
+        <article class="box bg-yellow plan plan-hot">
+          <span class="badge bg-pink">最受欢迎</span>
+          <h3>专业</h3>
+          <p class="price">¥39<small>/月</small></p>
+          <ul><li>10 个网站</li><li>全部模板</li><li>自定义域名</li><li>优先支持</li></ul>
+          <a class="btn btn-dark" href="#cta">选择专业版</a>
+        </article>
+        <article class="box bg-white plan">
+          <h3>团队</h3>
+          <p class="price">¥99<small>/月</small></p>
+          <ul><li>不限网站</li><li>多人协作</li><li>数据分析</li></ul>
+          <a class="btn btn-white" href="#cta">联系我们</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section section-alt">
+      <div class="section-head">
+        <span class="tag bg-orange">口碑</span>
+        <h2>大家都在说。</h2>
+      </div>
+      <div class="grid-3">
+        <blockquote class="box bg-white quote">
+          <p>“第一次有人夸我的网站好看，还问是哪家设计公司做的。”</p>
+          <footer><span class="avatar bg-pink">林</span>林小姐 · 花店老板</footer>
+        </blockquote>
+        <blockquote class="box bg-white quote">
+          <p>“颜色改一个变量就全站换肤，太省事了。”</p>
+          <footer><span class="avatar bg-mint">陈</span>陈同学 · 前端开发</footer>
+        </blockquote>
+        <blockquote class="box bg-white quote">
+          <p>“活动页上线当天转化率翻了一倍，配色真的抓眼球。”</p>
+          <footer><span class="avatar bg-yellow">王</span>王经理 · 市场运营</footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="section-head">
+        <span class="tag bg-mint">问答</span>
+        <h2>常见问题</h2>
+      </div>
+      <div class="faq">
+        <details class="box bg-white" open>
+          <summary>需要会写代码吗？</summary>
+          <p>不需要。直接改 HTML 里的文字和图片就行；想深度定制再动 CSS。</p>
+        </details>
+        <details class="box bg-white">
+          <summary>怎么换成我自己的品牌色？</summary>
+          <p>打开 styles.css，修改最上面 :root 里的颜色变量即可，全站自动同步。</p>
+        </details>
+        <details class="box bg-white">
+          <summary>可以商用吗？</summary>
+          <p>可以，这个模板可以自由用于个人和商业项目。</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta bg-pink" id="cta">
+      <h2>准备好变亮了吗？</h2>
+      <p>留下邮箱，我们第一时间通知你。</p>
+      <form class="cta-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='已订阅 ✓';">
+        <input type="email" placeholder="you@example.com" required aria-label="邮箱">
+        <button class="btn btn-dark" type="submit">订阅</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a class="logo" href="#">Bright<span>side</span></a>
+    <p>© 2026 Brightside. 用亮色做出好网站。</p>
+    <div class="footer-links">
+      <a href="#">微博</a><a href="#">小红书</a><a href="#">GitHub</a>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.getElementById('menuBtn');
+    const links = document.getElementById('navLinks');
+    btn.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+  </script>
+</body>
+</html>
