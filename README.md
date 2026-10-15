@@ -5,6 +5,16 @@
 ## 包含区块
 导航（移动端折叠菜单）· Hero · 跑马灯 · 课程 · 师资 · 收费 · 家长评价 · 常见问题 · 预约试听 · 页脚
 
+## 页面与功能
+- `index.html` 首页：每个按钮都能用，课程卡片进入对应科目页，老师卡片进入科目页并自动选好老师，收费按钮带入年级
+- `math.html` `english.html` `chinese.html` `science.html` `exam.html` `online.html` 科目页：选年级 → 选老师 → 选日期 → 选时间 → 填资料 → 确认预约
+- `book.html` 预约总入口 + 我的预约（可取消）
+- 已被预约的时段会自动变成不可选；预约成功后可一键 WhatsApp 确认
+
+## 修改内容
+- 科目、老师、上课时段、价格、WhatsApp 号码：全部在 `data.js`
+- 预约目前保存在访客浏览器（localStorage），正式上线时把 `course.js` 里的 `saveBookings` / `loadBookings` 换成你的后端或表单服务即可
+
 ## 换色
 所有颜色都在 `styles.css` 顶部的 `:root` 变量里：
 
