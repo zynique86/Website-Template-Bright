@@ -330,3 +330,26 @@ p { margin: 0 0 1em; }
   .icon-lg { width: 72px; height: 72px; font-size: 2.2rem; }
   .teacher-grid, .fields { grid-template-columns: 1fr; }
 }
+
+/* 师资资质 */
+.section-more { text-align: center; margin-top: 40px; }
+.teacher-wrap { display: grid; gap: 8px; }
+.quals-link { font-weight: 700; font-size: .9rem; justify-self: start; border-bottom: 3px solid var(--pink); }
+.mini-quals { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.mini-quals span { font-size: .78rem; font-weight: 700; background: var(--cream); border: 2px solid var(--ink); border-radius: 8px; padding: 2px 8px; }
+
+.teacher-profiles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; padding-top: 32px; }
+.profile { padding: 0; overflow: hidden; scroll-margin-top: 110px; }
+.profile:hover { transform: none; box-shadow: var(--shadow); }
+.profile:target { box-shadow: 10px 10px 0 var(--pink); }
+.profile-head { display: flex; align-items: center; gap: 18px; padding: 22px 26px; border-bottom: var(--border); }
+.profile-head h2 { margin: 0 0 8px; font-size: 1.6rem; }
+.profile-head .teacher-face { width: 72px; height: 72px; font-size: 2.6rem; background: var(--white); }
+.profile-body { padding: 22px 26px 26px; }
+.quals { display: grid; gap: 14px; margin-bottom: 20px; }
+.qual h4 { margin: 0 0 6px; font-size: 1rem; }
+.qual ul { margin: 0; padding-left: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+.qual li { background: var(--cream); border: 2px solid var(--ink); border-radius: 8px; padding: 4px 10px; font-size: .92rem; }
+.profile-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
+@media (max-width: 900px) { .teacher-profiles { grid-template-columns: 1fr; } }

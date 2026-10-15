@@ -8,6 +8,8 @@
   const S = window.SITE;
   const app = document.getElementById('app');
   const params = new URLSearchParams(location.search);
+  // 把科目里的老师引用展开成完整资料（老师资料集中在 SITE.teachers）
+  S.subjects.forEach(s => { s.teachers = s.teachers.map(r => ({ ...S.teachers[r.id], id: r.id, slots: r.slots })); });
   const subject = S.subjects.find(s => s.id === document.body.dataset.subject);
   const WEEK = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
   const KEY = 'brightpoint-bookings';
@@ -65,6 +67,45 @@
           </a>`).join('')}
       </div>
     </section>`;
+
+  /* ---------- 师资页 ---------- */
+  const qualList = (label, icon, items) => items && items.length
+    ? `<div class="qual"><h4>${icon} ${label}</h4><ul>${items.map(i => `<li>${esc(i)}</li>`).join('')}</ul></div>` : '';
+
+  if (document.body.dataset.page === 'teachers') {
+    app.innerHTML = `
+      <section class="page-hero">
+        <nav class="crumbs"><a href="index.html">首页</a> / <span>师资</span></nav>
+        <span class="tag bg-pink">师资团队</span>
+        <h1>认识我们的<mark>老师</mark></h1>
+        <p class="lead">每位老师都经过学历、教学资格和试教三重审核。以下是他们的学历、证书和教学成绩。</p>
+      </section>
+      <section class="section teacher-profiles">
+        ${Object.entries(S.teachers).map(([id, t]) => {
+          const teaches = S.subjects.filter(s => s.teachers.some(x => x.id === id));
+          return `
+          <article class="box bg-white profile" id="${id}">
+            <div class="profile-head ${t.color}">
+              <span class="teacher-face">${t.emoji}</span>
+              <div><h2>${esc(t.name)}</h2><span class="tag bg-white">${esc(t.title)} · ${t.years} 年教龄</span></div>
+            </div>
+            <div class="profile-body">
+              <p>${esc(t.bio)}</p>
+              <div class="quals">
+                ${qualList('学历', '🎓', t.education)}
+                ${qualList('证书与资格', '📜', t.certs)}
+                ${qualList('教学成绩', '🏆', t.achievements)}
+              </div>
+              <div class="profile-actions">
+                ${teaches.map(s => `<a class="btn btn-sm btn-white" href="${s.page}?t=${id}">预约${s.name} →</a>`).join('')}
+              </div>
+            </div>
+          </article>`;
+        }).join('')}
+      </section>`;
+    if (location.hash) document.querySelector(location.hash)?.scrollIntoView();
+    return;
+  }
 
   /* ---------- 无科目：预约总入口 ---------- */
   if (!subject) {
@@ -156,10 +197,14 @@
       `<button type="button" class="chip ${state.level === lv ? 'on' : ''}" data-level="${lv}">${S.levels[lv].name}</button>`).join('');
 
     $('teacherList').innerHTML = subject.teachers.map(t => `
-      <button type="button" class="teacher ${state.teacher === t ? 'on' : ''}" data-teacher="${t.id}">
-        <span class="teacher-face">${t.emoji}</span>
-        <span><strong>${t.name}</strong><small>${t.years} 年教龄</small><em>${t.bio}</em></span>
-      </button>`).join('');
+      <div class="teacher-wrap">
+        <button type="button" class="teacher ${state.teacher === t ? 'on' : ''}" data-teacher="${t.id}">
+          <span class="teacher-face">${t.emoji}</span>
+          <span><strong>${t.name}</strong><small>${t.title} · ${t.years} 年教龄</small><em>${t.bio}</em>
+            <span class="mini-quals"><span>🎓 ${t.education[0]}</span>${t.certs.map(c => `<span>📜 ${c}</span>`).join('')}</span></span>
+        </button>
+        <a class="quals-link" href="teachers.html#${t.id}">查看完整资质 →</a>
+      </div>`).join('');
 
     if (!state.teacher) {
       $('dateChips').innerHTML = '<p class="muted">请先选择老师</p>';
