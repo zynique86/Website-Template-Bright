@@ -86,7 +86,7 @@ p { margin: 0 0 1em; }
 .nav {
   position: sticky; top: 0; z-index: 10;
   display: flex; align-items: center; gap: 24px;
-  max-width: var(--max); margin: 16px auto 0; padding: 12px 20px;
+  max-width: var(--max); width: calc(100% - 32px); margin: 16px auto 0; padding: 12px 20px;
   background: var(--white);
   border: var(--border); border-radius: var(--radius); box-shadow: var(--shadow-sm);
 }
@@ -209,7 +209,7 @@ p { margin: 0 0 1em; }
   .plan-hot:hover { transform: translate(-3px, -3px); }
 }
 @media (max-width: 640px) {
-  .nav { margin: 10px 12px 0; gap: 12px; }
+  .nav { margin: 10px auto 0; width: calc(100% - 24px); gap: 12px; }
   .nav-cta { display: none; }
   .menu-btn { display: block; }
   .nav-links { display: none; position: absolute; top: calc(100% + 8px); left: 0; right: 0; flex-direction: column; gap: 0; background: var(--white); border: var(--border); border-radius: var(--radius); box-shadow: var(--shadow-sm); padding: 8px 16px; }
@@ -353,3 +353,60 @@ p { margin: 0 0 1em; }
 .profile-actions { display: flex; flex-wrap: wrap; gap: 10px; }
 
 @media (max-width: 900px) { .teacher-profiles { grid-template-columns: 1fr; } }
+
+/* 试听 / 报名 两种流程 */
+.text-link { font-weight: 700; border-bottom: 3px solid var(--pink); }
+.plan-btns { display: grid; gap: 10px; }
+.plan-btns .btn { justify-content: center; }
+.cta-or { margin: 18px 0 12px; font-weight: 700; }
+
+.mode-tabs { max-width: var(--max); margin: 24px auto 0; padding: 0 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; scroll-margin-top: 100px; }
+.mode-tab {
+  display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto; column-gap: 14px; align-items: center; text-align: left;
+  font: inherit; color: var(--ink); background: var(--white); cursor: pointer;
+  border: var(--border); border-radius: var(--radius); padding: 18px 22px; box-shadow: var(--shadow-sm);
+  transition: transform .1s, box-shadow .1s;
+}
+.mode-tab span { grid-row: span 2; font-size: 2rem; }
+.mode-tab strong { font-size: 1.25rem; }
+.mode-tab small { opacity: .75; }
+.mode-tab:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); }
+.mode-tab.on { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--ink); }
+.mode-tab[data-mode="trial"].on { background: var(--mint); }
+.mode-tab[data-mode="enroll"].on { background: var(--pink); }
+
+.step-note { margin: -8px 0 14px; }
+.chip.slot { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.3; }
+.chip.slot small { font-size: .78rem; font-weight: 500; }
+.chip.slot:disabled { text-decoration: none; }
+
+.fields select {
+  font: 500 1rem var(--font); padding: 12px 14px; border: var(--border); border-radius: 10px;
+  background: var(--white); width: 100%; color: var(--ink);
+}
+.plan-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.plan-option {
+  display: grid; gap: 4px; text-align: left; font: inherit; color: var(--ink); background: var(--white); cursor: pointer;
+  border: var(--border); border-radius: 12px; padding: 14px 16px; box-shadow: 3px 3px 0 var(--ink);
+}
+.plan-option small { font-size: .85rem; }
+.plan-option.on { background: var(--yellow); transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+
+.fee-lines { border: var(--border); border-radius: 10px; background: var(--white); padding: 12px 14px; margin-bottom: 16px; display: grid; gap: 6px; font-size: .95rem; }
+.fee-lines div { display: flex; justify-content: space-between; gap: 12px; }
+.fee-total { border-top: 2px dashed var(--ink); padding-top: 8px; font-weight: 700; font-size: 1.15rem; }
+.agree { display: flex; gap: 8px; align-items: center; font-weight: 700; font-size: .92rem; margin-bottom: 14px; }
+.agree input { width: 20px; height: 20px; accent-color: var(--ink); }
+.agree a { border-bottom: 2px solid var(--ink); }
+.shake { animation: shake .4s; }
+@keyframes shake { 25% { translate: -6px 0; } 75% { translate: 6px 0; } }
+
+.kind { display: inline-block; font-size: .75rem; font-weight: 700; border: 2px solid var(--ink); border-radius: 999px; padding: 0 8px; margin-right: 6px; vertical-align: 2px; }
+.enroll-no { font-size: 1.05rem; background: var(--yellow); border: 2px solid var(--ink); border-radius: 10px; display: inline-block; padding: 4px 12px; }
+
+@media (max-width: 640px) {
+  .mode-tabs { grid-template-columns: 1fr; padding: 0 16px; gap: 12px; }
+  .plan-options { grid-template-columns: 1fr; }
+}
+.mobile-only { display: none; }
+@media (max-width: 640px) { .nav-links .mobile-only { display: block; font-weight: 700; color: var(--pink); } }

@@ -19,9 +19,11 @@
       <a href="teachers.html">老师</a>
       <a href="#pricing">收费</a>
       <a href="#faq">问答</a>
-      <a href="book.html#my">我的预约</a>
+      <a href="book.html">预约试听</a>
+      <a href="book.html#my">我的记录</a>
+      <a class="mobile-only" href="enroll.html">立即报名</a>
     </nav>
-    <a class="btn btn-sm btn-dark nav-cta" href="book.html">预约试听</a>
+    <a class="btn btn-sm btn-dark nav-cta" href="enroll.html">立即报名</a>
     <button class="menu-btn" id="menuBtn" aria-label="打开菜单" aria-expanded="false">☰</button>
   </header>
 
@@ -33,8 +35,8 @@
         <h1>让孩子<br><mark>爱</mark>上学习。</h1>
         <p class="lead">小班教学、名师一对一跟进，从小学到中学全科辅导。不只是提高分数，更是培养孩子自己会学、想学。</p>
         <div class="hero-actions">
-          <a class="btn btn-pink" href="book.html">免费试听一堂课 →</a>
-          <a class="btn btn-white" href="#features">看看课程</a>
+          <a class="btn btn-pink" href="enroll.html">立即报名 →</a>
+          <a class="btn btn-white" href="book.html">免费试听一堂课</a>
         </div>
         <ul class="hero-stats">
           <li><strong>2,000+</strong><span>位学生</span></li>
@@ -148,20 +150,20 @@
           <h3>小学班</h3>
           <p class="price">$120<small>/科/月</small></p>
           <ul><li>每周 1 堂，每堂 1.5 小时</li><li>每班最多 8 人</li><li>每月学习报告</li></ul>
-          <a class="btn btn-white" href="book.html?level=primary">预约试听</a>
+          <div class="plan-btns"><a class="btn btn-dark" href="enroll.html?level=primary">立即报名</a><a class="btn btn-white" href="book.html?level=primary">预约试听</a></div>
         </article>
         <article class="box bg-yellow plan plan-hot">
           <span class="badge bg-pink">最多家长选择</span>
           <h3>中学班</h3>
           <p class="price">$160<small>/科/月</small></p>
           <ul><li>每周 1 堂，每堂 2 小时</li><li>每班最多 8 人</li><li>每月学习报告</li><li>课后答疑群</li></ul>
-          <a class="btn btn-dark" href="book.html?level=secondary">预约试听</a>
+          <div class="plan-btns"><a class="btn btn-dark" href="enroll.html?level=secondary">立即报名</a><a class="btn btn-white" href="book.html?level=secondary">预约试听</a></div>
         </article>
         <article class="box bg-white plan">
           <h3>考试冲刺班</h3>
           <p class="price">$380<small>/期</small></p>
           <ul><li>考前 6 周密集课程</li><li>历年考题精讲</li><li>模拟考 + 个别检讨</li></ul>
-          <a class="btn btn-white" href="exam.html">了解详情</a>
+          <div class="plan-btns"><a class="btn btn-dark" href="exam.html?mode=enroll">立即报名</a><a class="btn btn-white" href="exam.html">预约试听</a></div>
         </article>
       </div>
     </section>
@@ -196,8 +198,8 @@
       </div>
       <div class="faq">
         <details class="box bg-white" open>
-          <summary>可以先试听再报名吗？</summary>
-          <p>可以。每位新同学都能免费试听一堂课，觉得合适再报名。</p>
+          <summary>一定要先试听才能报名吗？</summary>
+          <p>不用。想先体验可以预约一堂免费试听；已经决定的话，可以直接在科目页选「直接报名」，选好固定时段就完成报名。</p>
         </details>
         <details class="box bg-white">
           <summary>孩子请假了怎么办？</summary>
@@ -212,12 +214,14 @@
 
     <!-- CTA -->
     <section class="cta bg-pink" id="cta">
-      <h2>预约一堂免费试听课</h2>
-      <p>留下联系电话，再选科目、老师和时间，一分钟完成预约。</p>
+      <h2>试听，还是直接报名？</h2>
+      <p>想先体验：留下联系电话预约免费试听。已经决定：直接选好时段完成报名。</p>
       <form class="cta-form" id="ctaForm" novalidate>
         <input type="tel" placeholder="家长联系电话" required aria-label="联系电话">
-        <button class="btn btn-dark" type="submit">立即预约</button>
+        <button class="btn btn-white" type="submit">预约试听</button>
       </form>
+      <p class="cta-or">或者</p>
+      <a class="btn btn-dark" href="enroll.html">直接报名 →</a>
     </section>
   </main>
 

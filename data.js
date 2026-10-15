@@ -10,8 +10,20 @@ window.SITE = {
   currency: "$",
   whatsapp: "60123456789", // 换成你的 WhatsApp 号码（国家码 + 号码，不要加号）
   levels: {
-    primary:   { name: "小学", price: 120, unit: "/科/月" },
-    secondary: { name: "中学", price: 160, unit: "/科/月" }
+    primary:   { name: "小学", price: 120, unit: "/科/月", grades: ["一年级", "二年级", "三年级", "四年级", "五年级", "六年级"] },
+    secondary: { name: "中学", price: 160, unit: "/科/月", grades: ["中一", "中二", "中三", "中四", "中五"] }
+  },
+
+  // 直接报名的设定
+  enroll: {
+    registrationFee: 50, // 首次报名的一次性报名费
+    classSize: 8,        // 每班人数上限
+    plans: [             // 缴费方式（冲刺班按期收费，不适用）
+      { id: "month",   name: "按月缴费",       months: 1, discount: 0 },
+      { id: "quarter", name: "按季缴费 · 95 折", months: 3, discount: 0.05 },
+      { id: "half",    name: "半年缴费 · 9 折",  months: 6, discount: 0.10 }
+    ],
+    terms: "报名后首月学费不设退款；请假可安排补课；学费需于每期开课前缴付。"
   },
 
   teachers: {
