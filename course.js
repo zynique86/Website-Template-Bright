@@ -101,7 +101,7 @@
         ${Object.entries(S.teachers).map(([id, t]) => {
           const teaches = S.subjects.filter(s => s.teachers.some(x => x.id === id));
           return `
-          <article class="box bg-white profile" id="${id}">
+          <article class="box bg-white profile ${params.get('t') === id ? 'picked' : ''}" id="${id}">
             <div class="profile-head ${t.color}">
               <span class="teacher-face">${t.emoji}</span>
               <div><h2>${esc(t.name)}</h2><span class="tag bg-white">${esc(t.title)} · ${t.years} 年教龄</span></div>
@@ -120,7 +120,92 @@
           </article>`;
         }).join('')}
       </section>`;
-    if (location.hash) document.querySelector(location.hash)?.scrollIntoView();
+    return;
+  }
+
+  /* ---------- 课程总览页 ---------- */
+  const page = document.body.dataset.page;
+  if (page === 'courses') {
+    app.innerHTML = `
+      <section class="page-hero">
+        <nav class="crumbs"><a href="index.html">首页</a> / <span>课程</span></nav>
+        <span class="tag bg-yellow">全部课程</span>
+        <h1>每一科，都有<mark>专人</mark>带。</h1>
+        <p class="lead">小学、中学全科辅导，每班最多 ${E.classSize} 人。点进科目可以看详情、选老师，预约试听或直接报名。</p>
+      </section>
+      <section class="section course-list">
+        ${S.subjects.map(s => `
+          <article class="box ${s.color} course-card">
+            <div class="course-top">
+              <div class="icon">${s.icon}</div>
+              <div><h2>${s.name}</h2><p>${s.tagline}</p></div>
+            </div>
+            <ul class="pill-list">${s.highlights.map(h => `<li>✓ ${h}</li>`).join('')}</ul>
+            <p class="course-meta"><strong>${s.price ? `${money(s.price)}${s.unit}` : `${money(S.levels.primary.price)} 起${S.levels.primary.unit}`}</strong> · 老师：${s.teachers.map(t => t.name).join('、')}</p>
+            <div class="course-actions">
+              <a class="btn btn-dark" href="${s.page}?mode=enroll">立即报名</a>
+              <a class="btn btn-white" href="${s.page}">预约试听</a>
+              <a class="btn btn-white" href="${s.page}">课程详情 →</a>
+            </div>
+          </article>`).join('')}
+      </section>`;
+    return;
+  }
+
+  /* ---------- 收费页 ---------- */
+  if (page === 'pricing') {
+    const exam = S.subjects.find(s => s.price);
+    const plan = (name, price, unit, items, links, hot) => `
+      <article class="box ${hot ? 'bg-yellow plan-hot' : 'bg-white'} plan">
+        ${hot ? '<span class="badge bg-pink">最多家长选择</span>' : ''}
+        <h3>${name}</h3>
+        <p class="price">${money(price)}<small>${unit}</small></p>
+        <ul>${items.map(i => `<li>${i}</li>`).join('')}</ul>
+        <div class="plan-btns">${links}</div>
+      </article>`;
+    app.innerHTML = `
+      <section class="page-hero">
+        <nav class="crumbs"><a href="index.html">首页</a> / <span>收费</span></nav>
+        <span class="tag bg-blue">收费</span>
+        <h1>学费<mark>透明</mark>，没有隐藏收费。</h1>
+        <p class="lead">第一堂试听课免费。正式报名时收取一次性报名费 ${money(E.registrationFee)}，之后按所选缴费方式缴付学费。</p>
+      </section>
+      <section class="section">
+        <div class="grid-3 pricing">
+          ${plan('小学班', S.levels.primary.price, S.levels.primary.unit, ['每周 1 堂，每堂 1.5 小时', `每班最多 ${E.classSize} 人`, '每月学习报告'],
+            '<a class="btn btn-dark" href="enroll.html?level=primary">立即报名</a><a class="btn btn-white" href="book.html?level=primary">预约试听</a>')}
+          ${plan('中学班', S.levels.secondary.price, S.levels.secondary.unit, ['每周 1 堂，每堂 2 小时', `每班最多 ${E.classSize} 人`, '每月学习报告', '课后答疑群'],
+            '<a class="btn btn-dark" href="enroll.html?level=secondary">立即报名</a><a class="btn btn-white" href="book.html?level=secondary">预约试听</a>', true)}
+          ${exam ? plan(exam.name, exam.price, exam.unit, exam.highlights.slice(0, 3),
+            `<a class="btn btn-dark" href="${exam.page}?mode=enroll">立即报名</a><a class="btn btn-white" href="${exam.page}">预约试听</a>`) : ''}
+        </div>
+      </section>
+      <section class="section section-alt">
+        <div class="section-head"><span class="tag bg-mint">缴费方式</span><h2>预缴越久，越划算。</h2></div>
+        <div class="grid-3">
+          ${E.plans.map((p, i) => `
+            <article class="box ${['bg-white', 'bg-mint', 'bg-pink'][i % 3]}">
+              <h3>${p.name}</h3>
+              <p>小学班 ${money(S.levels.primary.price * p.months * (1 - p.discount))} / 中学班 ${money(S.levels.secondary.price * p.months * (1 - p.discount))}<br>（每次缴 ${p.months} 个月）</p>
+            </article>`).join('')}
+        </div>
+        <p class="muted fee-note">报名费 ${money(E.registrationFee)}（一次性）。${esc(E.terms)}</p>
+      </section>`;
+    return;
+  }
+
+  /* ---------- 我的记录页 ---------- */
+  if (page === 'records') {
+    app.innerHTML = `
+      <section class="page-hero">
+        <nav class="crumbs"><a href="index.html">首页</a> / <span>我的记录</span></nav>
+        <span class="tag bg-orange">我的记录</span>
+        <h1>我的试听与<mark>报名</mark></h1>
+        <p class="lead">在这台设备上预约的试听课和报名记录都在这里，可以随时取消。</p>
+        <div class="hero-actions"><a class="btn btn-pink" href="enroll.html">立即报名 →</a><a class="btn btn-white" href="book.html">预约试听</a></div>
+      </section>
+      <section class="section records-only"><div class="box bg-white" id="myBookings"></div></section>`;
+    renderMyRecords();
     return;
   }
 
@@ -162,7 +247,7 @@
 
   app.innerHTML = `
     <section class="page-hero">
-      <nav class="crumbs"><a href="index.html">首页</a> / <a href="index.html#features">课程</a> / <span>${subject.name}</span></nav>
+      <nav class="crumbs"><a href="index.html">首页</a> / <a href="courses.html">课程</a> / <span>${subject.name}</span></nav>
       <div class="subject-head">
         <div class="icon icon-lg ${subject.color}">${subject.icon}</div>
         <div>
@@ -286,7 +371,7 @@
           <span><strong>${t.name}</strong><small>${t.title} · ${t.years} 年教龄</small><em>${t.bio}</em>
             <span class="mini-quals"><span>🎓 ${t.education[0]}</span>${t.certs.map(c => `<span>📜 ${c}</span>`).join('')}</span></span>
         </button>
-        <a class="quals-link" href="teachers.html#${t.id}">查看完整资质 →</a>
+        <a class="quals-link" href="teachers.html?t=${t.id}">查看完整资质 →</a>
       </div>`).join('');
 
     if (!enroll) renderTrial(); else renderEnroll();
@@ -502,5 +587,4 @@
   buildSteps();
   render();
   renderMyRecords();
-  if (state.teacher || params.has('level') || params.has('mode')) $('book').scrollIntoView();
 })();

@@ -410,3 +410,23 @@ p { margin: 0 0 1em; }
 }
 .mobile-only { display: none; }
 @media (max-width: 640px) { .nav-links .mobile-only { display: block; font-weight: 700; color: var(--pink); } }
+
+/* 导航当前页 + 独立页面 */
+.nav-links a.active { border-color: var(--yellow); background: var(--yellow); border-radius: 6px; padding: 4px 8px; }
+.profile.picked { box-shadow: 10px 10px 0 var(--pink); }
+.course-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; padding-top: 32px; }
+.course-card { display: flex; flex-direction: column; gap: 16px; }
+.course-card:hover { transform: none; box-shadow: var(--shadow); }
+.course-top { display: flex; gap: 18px; align-items: flex-start; }
+.course-top .icon { margin: 0; flex: none; }
+.course-top h2 { margin: 0 0 4px; }
+.course-top p { margin: 0; }
+.course-card .pill-list { margin: 0; }
+.course-card .pill-list li { font-size: .85rem; padding: 4px 12px; }
+.course-meta { margin: 0; }
+.course-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; }
+.section-alt > .fee-note { margin: 28px auto 0; }
+.records-only { padding-top: 24px; }
+.records-only .box:hover { transform: none; box-shadow: var(--shadow); }
+@media (max-width: 900px) { .course-list { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .nav-links a.active { padding: 12px 8px; } }

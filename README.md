@@ -8,6 +8,8 @@
 ## 页面与功能
 - `index.html` 首页：每个按钮都能用，课程卡片进入对应科目页，老师卡片进入科目页并自动选好老师，收费按钮带入年级
 - `math.html` `english.html` `chinese.html` `science.html` `exam.html` `online.html` 科目页：选年级 → 选老师 → 选日期 → 选时间 → 填资料 → 确认预约
+- `courses.html` 全部课程 · `pricing.html` 收费与缴费方式 · `records.html` 我的试听与报名记录
+- 导航栏每个按钮都对应独立页面，并标示当前所在页；所有页面打开时都从最顶部显示
 - `teachers.html` 师资页：每位老师的学历、证书与资格、教学成绩，可直接预约该老师的课
 - `book.html` 预约试听总入口 + 我的试听与报名记录（可取消）
 - `enroll.html` 直接报名总入口；科目页上方可切换「预约免费试听 / 直接报名」
