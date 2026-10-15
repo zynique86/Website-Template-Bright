@@ -507,11 +507,13 @@
 
   function afterSave(record) {
     document.querySelector('.toast')?.classList.remove('show');
-    try { localStorage.setItem('brightpoint-phone', record.phone); } catch {}
-    const form = $('infoForm');
-    form.reset(); form.phone.value = record.phone;
+    // 提交成功后清空所有选择和填写的资料，回到初始状态
+    try { localStorage.removeItem('brightpoint-phone'); } catch {}
+    state.level = subject.levels[0];
+    state.teacher = null;
     state.date = state.time = state.slot = state.start = null;
-    render(); renderMyRecords();
+    state.plan = E.plans[0].id;
+    buildSteps(); render(); renderMyRecords();
   }
 
   function confirmTrial() {
